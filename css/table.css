@@ -1,0 +1,125 @@
+/* table.css — DP table styles */
+
+.table-scroll {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+
+.dp-table {
+  border-collapse: separate;
+  border-spacing: 3px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  min-width: max-content;
+}
+
+/* Header row (sum values 0..target) */
+.dp-table thead th {
+  background: var(--bg-raised);
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-align: center;
+  white-space: nowrap;
+  min-width: 36px;
+}
+.dp-table thead th.th-sum-active {
+  background: var(--accent-lo);
+  color: var(--accent);
+}
+
+/* Row header (nums index) */
+.dp-table tbody .td-row-head {
+  background: var(--bg-raised);
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-align: right;
+  white-space: nowrap;
+}
+.dp-table tbody .td-row-head span.row-num {
+  color: var(--amber);
+  font-weight: 700;
+}
+
+/* Regular cells */
+.dp-table td.dp-cell {
+  width: 36px;
+  height: 28px;
+  text-align: center;
+  border-radius: 4px;
+  background: var(--bg-raised);
+  color: var(--text-dim);
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  cursor: default;
+  user-select: none;
+}
+
+/* TRUE cell */
+.dp-cell--true  { background: var(--green-lo);  color: var(--green);  font-weight: 700; }
+
+/* FALSE cell */
+.dp-cell--false { background: var(--red-lo);    color: var(--red);    font-weight: 700; }
+
+/* Currently being computed (cursor) */
+.dp-cell--cursor {
+  background: var(--accent-lo) !important;
+  color: var(--accent) !important;
+  font-weight: 700;
+  box-shadow: 0 0 0 2px var(--accent);
+  transform: scale(1.12);
+  z-index: 1;
+  position: relative;
+}
+
+/* Cells used during traceback */
+.dp-cell--trace {
+  background: var(--purple-lo) !important;
+  color: var(--purple) !important;
+  font-weight: 700;
+  box-shadow: 0 0 0 1.5px var(--purple);
+}
+
+/* Column being scanned */
+.dp-cell--col-active { outline: 1px solid var(--border-hi); }
+
+/* Empty/unfilled */
+.dp-cell--empty { color: var(--text-dim); }
+
+/* Cells referenced during the current check (e.g. dp[i-1][s], dp[i-1][s-num]) */
+.dp-cell--ref-excl {
+  background: #1a2035 !important;
+  color: #7aaaff !important;
+  font-weight: 700;
+  box-shadow: 0 0 0 1.5px #4477cc;
+  position: relative;
+}
+
+.dp-cell--ref-incl {
+  background: #1a3025 !important;
+  color: var(--green) !important;
+  font-weight: 700;
+  box-shadow: 0 0 0 1.5px var(--green);
+  position: relative;
+}
+
+/* Legend extras */
+.leg-box--ref-excl { background: #1a2035; border: 1px solid #4477cc; }
+.leg-box--ref-incl { background: #1a3025; border: 1px solid var(--green); }
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.leg { font-size: 10px; display: flex; align-items: center; gap: 5px; color: var(--text-muted); }
+.leg-box {
+  width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0;
+}
+.leg-box--true   { background: var(--green-lo);  border: 1px solid var(--green); }
+.leg-box--false  { background: var(--red-lo);     border: 1px solid var(--red); }
+.leg-box--cursor { background: var(--accent-lo);  border: 1px solid var(--accent); }
+.leg-box--trace  { background: var(--purple-lo);  border: 1px solid var(--purple); }
