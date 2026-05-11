@@ -6,6 +6,8 @@ An interactive, step-by-step visualization of the Subset Sum dynamic programming
 
 ---
 
+# [Live Preview](https://markcelesteria.github.io/Subset-sum-Dynamic-programming-visualizer/)
+
 ## What it does
 
 - Steps through the subset sum DP algorithm one operation at a time
@@ -16,14 +18,6 @@ An interactive, step-by-step visualization of the Subset Sum dynamic programming
   - Which cells are part of the traceback path
 - Displays live updates to the `nums[]` array, `result[]` subset, and key variables
 - Lets you edit the input array and target sum, then replay
-
-## How to run
-
-No installation or server required. Just open `index.html` in any modern browser.
-
-```
-double-click index.html   →   opens in browser
-```
 
 ## Controls
 
